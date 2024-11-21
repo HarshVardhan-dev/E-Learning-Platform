@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import CourseList from "./components/CourseList";
 import Header from "./components/Header";
 import CourseDetails from "./pages/CourseDetails";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<CourseList />} />
           <Route path="/courses/:id" element={<CourseDetails />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </>
