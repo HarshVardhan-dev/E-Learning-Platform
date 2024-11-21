@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Organize your custom components in a styles folder under src.
+
+Example: Create src/styles/components.css for component-level utilities: */
+@layer components {
+  .navbar {
+    @apply flex justify-between items-center bg-primary text-white p-4;
+  }
+  .footer {
+    @apply bg-secondary text-white p-6 text-center;
+  }
+  .header {
+    @apply bg-primary text-white py-4 px-6 shadow-md;
+  }
+  .btn-primary {
+    @apply bg-primary text-white px-4 py-2 rounded-lg font-bold hover:bg-primary-dark;
+  }
+  .card {
+    @apply bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg p-4;
+  }
+  .pagination-btn {
+    @apply px-4 py-2 mx-1 rounded-lg font-bold hover:bg-primary hover:text-white;
+  }
+  .pagination-btn-active {
+    @apply bg-primary text-white;
+  }
+  .search-input {
+    @apply w-full p-3 border border-gray-300 rounded-lg shadow focus:outline-none focus:ring focus:ring-blue-200;
+  }
+}

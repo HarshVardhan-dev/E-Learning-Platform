@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchCourses } from "../services/courseService";
 import SearchBar from "./SearchBar";
+import CourseCard from "./CourseCard";
 
 const CourseList = () => {
   const [courses, setCourses] = useState([]);
@@ -25,21 +26,16 @@ const CourseList = () => {
   }
 
   return (
-    <div>
-      <h1>Available Courses</h1>
+    <>
       <SearchBar onSearch={setSearchTerm} />
-      <ul>
-        {courses.map((course) => (
-          <li key={course._id}>
-            <h2>{course.title}</h2>
-            <p>{course.description}</p>
-            <p>Category: {course.category}</p>
-            <p>Price: ${course.price}</p>
-            <p>Instructor: {course.instructor}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+      <div className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <ul>
+          {courses.map((course) => (
+            <CourseCard course={course} />
+          ))}
+        </ul>
+      </div>
+    </>
   );
 };
 
