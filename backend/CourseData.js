@@ -1,5 +1,6 @@
 export const courses = [
   {
+    id: 1,
     title: "React for Beginners",
     description: "Learn React.js from scratch.",
     category: "Programming",
@@ -9,6 +10,7 @@ export const courses = [
     ratings: 4.5,
   },
   {
+    id: 2,
     title: "Advanced React",
     description: "Deep dive into React.js concepts.",
     category: "Programming",
@@ -18,6 +20,7 @@ export const courses = [
     ratings: 4.8,
   },
   {
+    id: 3,
     title: "UI/UX Design Basics",
     description: "Master the basics of UI/UX design.",
     category: "Design",
@@ -27,6 +30,7 @@ export const courses = [
     ratings: 4.3,
   },
   {
+    id: 4,
     title: "Python for Data Science",
     description: "Learn Python with a focus on data science.",
     category: "Programming",
@@ -36,6 +40,7 @@ export const courses = [
     ratings: 4.7,
   },
   {
+    id: 5,
     title: "Digital Marketing 101",
     description: "An introduction to digital marketing strategies.",
     category: "Marketing",
@@ -44,8 +49,8 @@ export const courses = [
     instructor: "Eve Wilson",
     ratings: 4.2,
   },
-
   {
+    id: 6,
     title: "Mastering JavaScript",
     description: "A comprehensive guide to JavaScript.",
     category: "Programming",
@@ -55,6 +60,7 @@ export const courses = [
     ratings: 4.8,
   },
   {
+    id: 7,
     title: "Python for Data Science",
     description: "Explore the fundamentals of data science with Python.",
     category: "Data Science",
@@ -64,6 +70,7 @@ export const courses = [
     ratings: 4.7,
   },
   {
+    id: 8,
     title: "Web Development Bootcamp",
     description: "Learn to build full-stack web applications.",
     category: "Web Development",
@@ -73,6 +80,7 @@ export const courses = [
     ratings: 4.9,
   },
   {
+    id: 9,
     title: "Introduction to Machine Learning",
     description: "Learn the basics of machine learning and AI.",
     category: "Artificial Intelligence",
@@ -82,6 +90,7 @@ export const courses = [
     ratings: 4.6,
   },
   {
+    id: 10,
     title: "Graphic Design Essentials",
     description: "Master the basics of graphic design and Adobe tools.",
     category: "Design",
@@ -91,6 +100,7 @@ export const courses = [
     ratings: 4.3,
   },
   {
+    id: 11,
     title: "Advanced Excel Techniques",
     description: "Boost your productivity with Excel.",
     category: "Business",
@@ -100,6 +110,7 @@ export const courses = [
     ratings: 4.2,
   },
   {
+    id: 12,
     title: "SEO and Digital Marketing",
     description: "Learn strategies to improve your website's SEO.",
     category: "Marketing",
@@ -109,6 +120,7 @@ export const courses = [
     ratings: 4.4,
   },
   {
+    id: 13,
     title: "Cybersecurity Fundamentals",
     description: "Understand the essentials of cybersecurity.",
     category: "Cybersecurity",
@@ -118,6 +130,7 @@ export const courses = [
     ratings: 4.7,
   },
   {
+    id: 14,
     title: "Photography Basics",
     description: "Start your journey in photography.",
     category: "Photography",
@@ -127,6 +140,7 @@ export const courses = [
     ratings: 4.1,
   },
   {
+    id: 15,
     title: "Public Speaking Mastery",
     description: "Improve your public speaking and presentation skills.",
     category: "Personal Development",
@@ -134,5 +148,109 @@ export const courses = [
     price: 40,
     instructor: "Kevin Lee",
     ratings: 4.5,
+  },
+  {
+    id: 16,
+    title: "Data Visualization with Tableau",
+    description: "Learn how to create stunning visualizations with Tableau.",
+    category: "Data Science",
+    duration: 10,
+    price: 50,
+    instructor: "Sarah Collins",
+    ratings: 4.6,
+  },
+  {
+    id: 17,
+    title: "Ethical Hacking Basics",
+    description:
+      "Understand the fundamentals of ethical hacking and cybersecurity.",
+    category: "Cybersecurity",
+    duration: 12,
+    price: 65,
+    instructor: "David Clark",
+    ratings: 4.8,
+  },
+  {
+    id: 18,
+    title: "Creative Writing Workshop",
+    description: "Hone your creative writing skills with practical exercises.",
+    category: "Personal Development",
+    duration: 8,
+    price: 40,
+    instructor: "Laura Bennett",
+    ratings: 4.5,
+  },
+  {
+    id: 19,
+    title: "Introduction to Blockchain",
+    description:
+      "Learn the basics of blockchain technology and its applications.",
+    category: "Technology",
+    duration: 14,
+    price: 80,
+    instructor: "James Foster",
+    ratings: 4.7,
+  },
+  {
+    id: 20,
+    title: "Mobile App Development with Flutter",
+    description: "Build beautiful cross-platform apps using Flutter.",
+    category: "Programming",
+    duration: 18,
+    price: 90,
+    instructor: "Sophia Adams",
+    ratings: 4.9,
+  },
+  {
+    id: 21,
+    title: "Financial Modeling Essentials",
+    description: "Master financial modeling techniques for business analysis.",
+    category: "Business",
+    duration: 16,
+    price: 75,
+    instructor: "Patrick Williams",
+    ratings: 4.6,
+  },
+  {
+    id: 22,
+    title: "Advanced SQL for Data Analysis",
+    description:
+      "Learn advanced SQL techniques for data manipulation and analysis.",
+    category: "Data Science",
+    duration: 12,
+    price: 65,
+    instructor: "Emma Watson",
+    ratings: 4.8,
+  },
+  {
+    id: 23,
+    title: "Mastering Adobe Photoshop",
+    description: "Become proficient in Adobe Photoshop for graphic design.",
+    category: "Design",
+    duration: 10,
+    price: 50,
+    instructor: "Oliver Brown",
+    ratings: 4.5,
+  },
+  {
+    id: 24,
+    title: "AI-Powered Chatbot Development",
+    description: "Learn how to develop AI-powered chatbots for businesses.",
+    category: "Artificial Intelligence",
+    duration: 15,
+    price: 85,
+    instructor: "Isabella Reed",
+    ratings: 4.7,
+  },
+  {
+    id: 25,
+    title: "Stress Management Techniques",
+    description:
+      "Discover effective strategies to manage stress and enhance well-being.",
+    category: "Personal Development",
+    duration: 6,
+    price: 35,
+    instructor: "Liam Carter",
+    ratings: 4.4,
   },
 ];
