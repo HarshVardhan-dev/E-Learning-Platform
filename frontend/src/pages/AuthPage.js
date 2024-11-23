@@ -1,18 +1,20 @@
 import React, { useState, useContext } from "react";
 import Login from "../Forms/Login.js"; // Import Login component
 import Register from "../Forms/Register.js"; // Import Register component
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext.js";
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true); // State to toggle between Login and Register
   const navigate = useNavigate();
+  const location = useLocation();
+  const redirect = new URLSearchParams(location.search).get("redirect") || "/";
 
   const { login } = useContext(AuthContext); // Get Login function from AuthContext
 
   const onAuthSuccess = (userData) => {
     login(userData); //Update the AuthContext with user data
-    navigate("/"); // Redirect to the home page
+    navigate(redirect); // Redirect to the intended course or fallback to home
   };
 
   const handleHomeReturn = () => {
