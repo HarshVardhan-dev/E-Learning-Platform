@@ -48,7 +48,11 @@ router.get("/", async (req, res) => {
 // Get Course by ID
 router.get("/:id", async (req, res) => {
   try {
-    const course = await Course.findById(req.params.id);
+    const course = await Course.findById(req.params.id).populate({
+      path: "reviews.user",
+      select: "name", // Only fetch the user's name
+    });
+
     if (!course) {
       return res.status(404).json({ message: "Course not Found" });
     }
@@ -81,6 +85,7 @@ router.post("/:id/reviews", protect, async (req, res) => {
     // Create a new review
     const review = {
       user: req.user._id,
+      name: req.user.name,
       rating: Number(rating),
       comment,
     };

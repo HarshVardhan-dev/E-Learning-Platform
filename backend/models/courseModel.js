@@ -9,6 +9,10 @@ const reviewSchema = mongoose.Schema(
       ref: "User", // References the User model
       required: true,
     },
+    name: {
+      type: String, // Store the user's name
+      required: true,
+    },
     rating: {
       type: Number,
       required: true,
