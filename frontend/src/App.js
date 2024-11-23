@@ -7,6 +7,7 @@ import CourseList from "./components/CourseList";
 import Header from "./components/Header";
 import CourseDetails from "./pages/CourseDetails";
 import NotFound from "./pages/NotFound";
+import AuthPage from "./pages/AuthPage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
 
         {/* Other Routes */}
         <Route path="/courses/:id" element={<CourseDetails />} />
+        <Route path="/auth" element={<AuthPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

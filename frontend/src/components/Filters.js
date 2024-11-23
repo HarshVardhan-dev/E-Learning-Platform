@@ -40,6 +40,9 @@ const Filters = ({ filters, sortOption, onFilterChange, onSortChange }) => {
         <option value="Programming">Programming</option>
         <option value="Design">Design</option>
         <option value="Marketing">Marketing</option>
+        <option value="Data Science">Data Science</option>
+        <option value="Cybersecurity">Cybersecurity</option>
+        {/* <option value="Marketing">Marketing</option> */}
       </select>
 
       {/* Price Filter */}

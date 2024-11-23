@@ -1,18 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchCourseById } from "../services/courseService";
+import ReviewForm from "../Forms/ReviewForm.js";
+import { AuthContext } from "../contexts/AuthContext.js";
 
 const CourseDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
   const [course, setCourse] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     const getCourse = async () => {
       try {
         const data = await fetchCourseById(id);
         setCourse(data);
+        setReviews(data.reviews || []); // Assume course has a reviews array
       } catch (error) {
         console.error(error);
       } finally {
@@ -21,6 +26,11 @@ const CourseDetails = () => {
     };
     getCourse();
   }, [id]);
+
+  const handleReviewSubmitted = (rating, comment) => {
+    // Refresh reviews when a new review is submitted
+    setReviews((prev) => [...prev, { name: user.name, rating, comment }]);
+  };
 
   if (loading) {
     return (
@@ -77,6 +87,47 @@ const CourseDetails = () => {
             <span className="font-semibold">Ratings:</span> {course.ratings}
           </p>
         </div>
+        {/* Reviews */}
+        <div className="mt-8">
+          <h2 className="text-2xl font-bold mb-4">Reviews</h2>
+          {reviews.length > 0 ? (
+            reviews.map((review, index) => (
+              <div
+                key={index}
+                className="p-4 border rounded-lg mb-4 bg-gray-50 shadow"
+              >
+                <strong>{review.name}</strong>
+                <p>Rating: {review.rating}/5</p>
+                <p>{review.comment}</p>
+              </div>
+            ))
+          ) : (
+            <p>No reviews yet. Be the first to review!</p>
+          )}
+        </div>
+        {/* Review Form */}
+        {/* Review Form */}
+        {user?.token ? (
+          <ReviewForm
+            courseId={id}
+            token={user.token}
+            onReviewSubmitted={(rating, comment) =>
+              handleReviewSubmitted(rating, comment)
+            }
+          />
+        ) : (
+          <div className="text-center my-6">
+            <p className="text-lg font-semibold mb-4">
+              Want to leave a review? Please log in or register first.
+            </p>
+            <button
+              onClick={() => navigate(`/auth?redirect=/courses/${id}`)}
+              className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition duration-300"
+            >
+              Log In / Register
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

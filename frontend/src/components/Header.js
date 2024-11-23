@@ -9,6 +9,9 @@ const Header = () => {
     navigate("/");
   };
 
+  const handleAuthPage = () => {
+    navigate("/auth");
+  };
   return (
     <header className="relative bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 p-8 text-white">
       <div className="container mx-auto flex flex-col items-center text-center">
@@ -48,7 +51,7 @@ const Header = () => {
         </motion.div>
 
         {/* Animated GIF or Illustration */}
-        <div className="mt-8">
+        {/* <div className="mt-8">
           <motion.img
             src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif"
             alt="Learning Animation"
@@ -57,7 +60,15 @@ const Header = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 1.5, duration: 0.8 }}
           />
-        </div>
+        </div> */}
+        <motion.div className="mt-4">
+          <button
+            onClick={handleAuthPage}
+            className="bg-yellow-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-yellow-600 transition duration-300 font-semibold"
+          >
+            Sign In/Register
+          </button>
+        </motion.div>
       </div>
     </header>
   );

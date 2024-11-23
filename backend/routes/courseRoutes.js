@@ -1,8 +1,10 @@
 import express from "express";
 import Course from "../models/courseModel.js";
+import { protect } from "../Middlewares/authMiddleware.js";
 
 const router = express.Router();
 
+// Get all Courses
 router.get("/", async (req, res) => {
   try {
     const searchQuery = req.query.search || "";
@@ -43,6 +45,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Get Course by ID
 router.get("/:id", async (req, res) => {
   try {
     const course = await Course.findById(req.params.id);
@@ -52,6 +55,49 @@ router.get("/:id", async (req, res) => {
     res.json(course);
   } catch (error) {
     res.status(500).json({ message: error.message });
+  }
+});
+
+// Add Review by Authenticated Users
+router.post("/:id/reviews", protect, async (req, res) => {
+  const { rating, comment } = req.body;
+
+  try {
+    const course = await Course.findById(req.params.id);
+
+    if (!course) {
+      return res.status(404).json({ message: "Course not found" });
+    }
+
+    // Check if the user has already reviewed this course
+    const alreadyReviewed = course.reviews.find(
+      (review) => review.user.toString() === req.user._id.toString()
+    );
+
+    if (alreadyReviewed) {
+      return res.status(400).json({ message: "Course already reviewed" });
+    }
+
+    // Create a new review
+    const review = {
+      user: req.user._id,
+      rating: Number(rating),
+      comment,
+    };
+
+    // Add the review to the course
+    course.reviews.push(review);
+
+    // Update the average rating
+    course.ratings =
+      course.reviews.reduce((acc, item) => item.rating + acc, 0) /
+      course.reviews.length;
+
+    await course.save();
+
+    res.status(201).json({ message: "Review added successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 });
 

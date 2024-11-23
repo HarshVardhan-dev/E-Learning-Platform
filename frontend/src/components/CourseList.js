@@ -1,10 +1,12 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useContext } from "react";
 import { fetchCourses } from "../services/courseService";
 import SearchBar from "./SearchBar";
 import CourseCard from "./CourseCard";
 import Pagination from "./Pagination";
 import Spinner from "./Spinner";
 import Filters from "./Filters";
+
+import { AuthContext } from "../contexts/AuthContext";
 
 const CourseList = () => {
   const [courses, setCourses] = useState([]);
@@ -14,6 +16,8 @@ const CourseList = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [error, setError] = useState(null);
+
+  const { user } = useContext(AuthContext);
 
   // Filters and Sorting
   const [filters, setFilters] = useState({
@@ -97,15 +101,18 @@ const CourseList = () => {
       </div>
 
       <div className="flex flex-grow">
-        {/* Filters Sidebar */}
-        <div className="w-full lg:w-1/4 p-4 bg-gray-50 border-r">
-          <Filters
-            filters={filters}
-            sortOption={`${sortOptions.sort}-${sortOptions.order}`}
-            onFilterChange={handleFilterChange}
-            onSortChange={handleSortChange}
-          />
-        </div>
+        {/* Show Filters only if user is logged in */}
+        {user && (
+          <div className="w-full lg:w-1/4 p-4 bg-gray-50 border-r">
+            {/* Filters Sidebar */}
+            <Filters
+              filters={filters}
+              sortOption={`${sortOptions.sort}-${sortOptions.order}`}
+              onFilterChange={handleFilterChange}
+              onSortChange={handleSortChange}
+            />
+          </div>
+        )}
 
         {/* Courses Section */}
         <div className="w-full lg:w-3/4 p-6">

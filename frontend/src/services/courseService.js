@@ -32,3 +32,32 @@ export const fetchCourseById = async (id) => {
     throw error;
   }
 };
+
+/**
+ * Submit a review for a course.
+ * @param {string} courseId - The ID of the course to review.
+ * @param {object} reviewData - An object containing `rating` and `comment`.
+ * @param {string} token - The JWT token for authentication.
+ * @returns {Promise<object>} - The response data from the server.
+ */
+export const submitReview = async (courseId, reviewData, token) => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`, // Include token in the Authorization header
+      },
+    };
+
+    const response = await axios.post(
+      `${API_URL}/${courseId}/reviews`, // Endpoint for submitting reviews
+      reviewData,
+      config
+    );
+
+    return response.data; // Return the response data
+  } catch (error) {
+    console.error("Error submitting review:", error);
+    throw error; // Rethrow the error to be handled by the caller
+  }
+};
